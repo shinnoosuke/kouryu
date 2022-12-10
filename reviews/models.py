@@ -11,10 +11,10 @@ class Review(models.Model):
 
     )
 
-    store_name = models.CharField('店名', max_length=225)
-    title = models.CharField('タイトル', max_length=255)
-    text = models.TextField('口コミテキスト',blank=True)
-    stars = models.IntegerField('星の数', choices=STARS)
+    store_name = models.CharField('タイトル', max_length=225)
+    title = models.CharField('コメント', max_length=255)
+    text = models.TextField('コメント詳細',blank=True)
+    #stars = models.IntegerField('星の数', choices=STARS)
     created_at = models.DateTimeField('作成日', default=timezone.now)
 
     def __str__(self):

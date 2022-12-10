@@ -5,8 +5,11 @@
     {% for review in review_list %}
         <article>
             <h2>{{ review.store_name }}</h2>
+            <p>{{ review.text}}</p>
+            <p>{{ review.stars}}</p>
             <p>{{ review.get_starts_display}} - {{ review.title }}</p>
-            <small>Posted at {{created_at}}</small>
+            <small>Posted at {{review.created_at}}</small>
+            <p>-----------------------------------------------------</p>
         </article>
     {% endfor %}
 {% endblock %}    
