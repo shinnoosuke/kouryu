@@ -23,7 +23,7 @@ def review_create_send(request):
     return redirect('reviews:review_list')
 
 def review_detail(request, review_id):
-    review= Review.objects.get(id=review_id)
+    review = Review.objects.get(id=review_id)
     context = {
         'review' : review,
     }
@@ -39,7 +39,8 @@ def review_delete(request, pk):
         'review': review
     }         
 
-    return render(request, 'review_confirm_delete.html', context)
+    #return render(request, 'review_confirm_delete.html', context)
+    return render(request, 'reviews/review_confirm_delete.html', context)
 
 def review_update(request, pk):
     review = get_object_or_404(Review, pk=pk)
@@ -52,7 +53,7 @@ def review_update(request, pk):
         'form': form
     }         
 
-    return render(request, 'review/review_form.html', context)
+    return render(request, 'reviews/review_form.html', context)
 
 #def review_create(request):
 #    form = ReviewCreateForm(request.POST or None)

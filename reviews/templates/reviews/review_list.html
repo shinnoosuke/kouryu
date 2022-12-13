@@ -8,8 +8,9 @@
             <p>{{ review.get_starts_display }}{{ review.title}}{{ review.text }}</p>
             <small>Posted at {{review.created_at}}</small>
             <p>-----------------------------------------------------</p>
-            
+            <h2<a href="{% url 'reviews:review_detail' review.id %}">{{ review.store_name }}</a></h2>
         </article>
     {% endfor %}
     <a href="{% url 'reviews:review_create' %}">つぶやきページへ</a>
+    
 {% endblock %}    
