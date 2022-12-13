@@ -13,7 +13,7 @@ def review_create(request):
     context = {
         'form': ReviewCreateForm()
     }
-    return render(request, 'review/review_form.html', context)
+    return render(request, 'reviews/review_form.html', context)
 
 def review_create_send(request):
     #name = request.POST.get('store_name') 
@@ -27,7 +27,32 @@ def review_detail(request, review_id):
     context = {
         'review' : review,
     }
-    return render(request,'reviews/review_detail.html', context) 
+    return render(request,'reviews/review_detail.html', context)
+
+def review_delete(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    if request.method == 'POST':
+        review.delete()
+        return redirect('review:review_list')
+
+    context = {
+        'review': review
+    }         
+
+    return render(request, 'review_confirm_delete.html', context)
+
+def review_update(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    form = ReviewCreateForm(request.POST or None, instance=review)
+    if request.method == 'POST' and form.is_valid():
+        review.delete()
+        return redirect('review:review_list')
+
+    context = {
+        'form': form
+    }         
+
+    return render(request, 'review/review_form.html', context)
 
 #def review_create(request):
 #    form = ReviewCreateForm(request.POST or None)
