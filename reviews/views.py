@@ -38,12 +38,11 @@ def review_delete(request, pk):
     review = get_object_or_404(Review, pk=pk)
     if request.method == 'POST':
         review.delete()
-        return redirect('review:review_list')
+        return redirect('reviewss:review_list')
 
     context = {
         'review': review
     }         
-
     #return render(request, 'review_confirm_delete.html', context)
     return render(request, 'reviews/review_confirm_delete.html', context)
 

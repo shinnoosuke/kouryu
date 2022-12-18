@@ -2,12 +2,14 @@
 
 {% block content %}
     <h1>つぶやき</h1>
+    <a href="{% url 'reviews:review_create' %}">つぶやきページへ</a>
     {% for review in review_list %}
         <article>
-            <h2>{{ review.store_name }}</h2>
-            <p>{{ review.get_stars_display }} - {{ review.text }}</p>
-            <small>Posted at {{review.created_at}}</small>
             <h2><a href="{% url 'reviews:review_detail' review.id %}">{{ review.store_name }}</a></h2>
+            <p>{{ review.get_stars_display }}{{ review.title}}</p>
+            <p>{{ review.text }}</p>
+            <small>Posted at {{review.created_at}}</small>
+            
         </article>
     {% endfor %}
     <a href="{% url 'reviews:review_create' %}">つぶやきページへ</a>
