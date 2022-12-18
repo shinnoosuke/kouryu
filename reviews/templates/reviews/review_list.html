@@ -5,10 +5,9 @@
     {% for review in review_list %}
         <article>
             <h2>{{ review.store_name }}</h2>
-            <p>{{ review.get_starts_display }}{{ review.title}}{{ review.text }}</p>
+            <p>{{ review.get_stars_display }} - {{ review.text }}</p>
             <small>Posted at {{review.created_at}}</small>
-            <p>-----------------------------------------------------</p>
-            <h2<a href="{% url 'reviews:review_detail' review.id %}">{{ review.store_name }}</a></h2>
+            <h2><a href="{% url 'reviews:review_detail' review.id %}">{{ review.store_name }}</a></h2>
         </article>
     {% endfor %}
     <a href="{% url 'reviews:review_create' %}">つぶやきページへ</a>

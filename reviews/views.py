@@ -22,6 +22,11 @@ def review_create_send(request):
     form.save()
     return redirect('reviews:review_list')
 
+    context = {
+        'form': ReviewCreateForm()
+    }
+    return render(request, 'reviews/review_form.html', context)
+
 def review_detail(request, review_id):
     review = Review.objects.get(id=review_id)
     context = {
@@ -47,7 +52,7 @@ def review_update(request, pk):
     form = ReviewCreateForm(request.POST or None, instance=review)
     if request.method == 'POST' and form.is_valid():
         review.delete()
-        return redirect('review:review_list')
+        return redirect('reviews:review_list')
 
     context = {
         'form': form
